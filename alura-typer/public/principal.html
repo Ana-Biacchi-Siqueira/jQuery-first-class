@@ -3,23 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <title>Alura Typer</title>
+    <link rel="stylesheet" href="css/libs/materialize.min.css">
+    <link rel="stylesheet" href="css/libs/google-fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+<div class="container">
+
   </head>
   <body>
-    <h1>Alura Typer</h1>
-    <p class="phrase">This phrase has six fine words.</p>
-    <ul class="infosPhrase">
-      <li><span id="phraseLength">5</span> words</li>
-      <li><span id="typingTimer">3</span> seconds</li>
+    <h1 class="center">Alura Typer</h1>
+    <p class="phrase center">This phrase has six fine words.</p>
+
+    <ul class="infosPhrase center">
+      <li>
+        <i class="small material-icons fontIcons">description</i>
+        <span id="phraseLength">5</span> words</li>
+      <li>
+        <i class="small material-icons fontIcons">query_builder</i>
+        <span id="typingTimer">3</span> seconds</li>
     </ul>
 
     <textarea class="typingArea" rows="8" cols="40"></textarea>
-    <button id="refreshButton">Try Again</button>
 
-    <ul>
+    <div class="buttons">
+      <a class="btn-floating btn-large waves-effect waves-light red" id="refreshButton"><i class="material-icons">restore</i></a>
+
+    <!--  <button id="refreshButton">Try Again</button>-->
+    </div>
+
+    <ul class="center">
       <li><span id="letterAmount">0</span> letters</li>
       <li><span id="wordAmount">0</span> words</li>
     </ul>
-
+  </body>
+</div>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
   </body>
