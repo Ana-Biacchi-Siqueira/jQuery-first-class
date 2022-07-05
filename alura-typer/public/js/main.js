@@ -28,12 +28,15 @@ function startsAmountCount() {
 function startsTimer() {
   var timeLeft = $("#typingTimer").text();
   area.one("focus", function () {
+    $("#refreshButton").attr("disabled", true);
     var timeStop = setInterval(function () {
       timeLeft--;
       $("#typingTimer").text(timeLeft);
       if (timeLeft < 1) {
         area.attr("disabled", true);
         clearInterval(timeStop);
+        area.toggleClass("areaDeactivated");
+        $("#refreshButton").attr("disabled", false);
       }
     }, 1000);
   });
@@ -47,5 +50,6 @@ function restartGame() {
     $("#letterAmount").text("0");
     $("#typingTimer").text(refreshTime);
     startsTimer();
+    area.toggleClass("areaDeactivated");
   });
 }
