@@ -5,6 +5,7 @@ $(function () {
   refreshPhrase();
   startsAmountCount();
   startsTimer();
+  correctionSync();
   $("#refreshButton").click(restartGame);
 });
 
@@ -42,6 +43,25 @@ function startsTimer() {
   });
 }
 
+function correctionSync(){
+
+  var phrase = $(".phrase").text();
+  area.on("input",function(){
+    var typed = area.val();
+    var typingSync = phrase.substr(0,typed.length);
+    if(typed == typingSync){
+      area.addClass("correctSync");
+      area.removeClass("incorrectSync");
+    }else{
+      area.addClass("incorrectSync");
+      area.removeClass("correctSync");
+    }
+  });
+
+}
+
+
+
 function restartGame() {
   $("#refreshButton").click(function () {
     area.attr("disabled", false);
@@ -51,5 +71,7 @@ function restartGame() {
     $("#typingTimer").text(refreshTime);
     startsTimer();
     area.toggleClass("areaDeactivated");
+    area.removeClass("correctSync");
+    area.removeClass("incorrectSync");
   });
 }
