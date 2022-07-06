@@ -1,0 +1,26 @@
+.typingArea{
+    font-size: 20px;
+    height: 130px;
+}
+
+.phrase{
+    font-size: 20px;
+    text-align: left;
+
+}
+
+.areaDeactivated{
+    background-color: lightgray;
+}
+
+.fontIcons{
+    vertical-align: middle;
+}
+
+.correctSync{
+    border: 3px solid green;
+}
+
+.incorrectSync{
+    border: 3px solid red;
+}
