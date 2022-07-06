@@ -33,14 +33,20 @@ function startsTimer() {
     var timeStop = setInterval(function () {
       timeLeft--;
       $("#typingTimer").text(timeLeft);
-      if (timeLeft < 1) {
-        area.attr("disabled", true);
-        clearInterval(timeStop);
-        area.toggleClass("areaDeactivated");
-        $("#refreshButton").attr("disabled", false);
+      if (timeLeft < 1) {        
+      clearInterval(timeStop);
+      gameOver();
       }
     }, 1000);
   });
+}
+
+function gameOver(){
+
+  area.attr("disabled", true);
+  area.toggleClass("areaDeactivated");
+  $("#refreshButton").attr("disabled", false);
+  boardInsert();
 }
 
 function correctionSync(){
@@ -57,6 +63,18 @@ function correctionSync(){
       area.removeClass("correctSync");
     }
   });
+
+}
+
+function boardInsert(){
+    var scoringBoard = $(".scoreBoard").find("tbody");
+    var playerName = "Anna";
+    var numOfWords = $("#wordAmount").text();
+    var boardRow = "<tr>"+
+                      "<td>"+ playerName + "</td>"+
+                      "<td>"+ numOfWords + " words" + "</td>"+
+                    "</tr>"
+    scoringBoard.prepend(boardRow);
 
 }
 
