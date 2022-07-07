@@ -3,10 +3,11 @@ var area = $(".typingArea");
 
 $(function () {
   refreshPhrase();
-  startsAmountCount();
+  startsAmountCount()
   startsTimer();
   correctionSync();
-  $("#refreshButton").click(restartGame);
+  $("#refreshButton").click(restartGame);  
+   
 });
 
 function refreshPhrase() {
@@ -66,44 +67,29 @@ function correctionSync(){
 
 }
 
-function boardInsert(){
-    var scoringBoard = $("<tr>");
-    var playerName = $("<td>").text(Anna);
-    var numOfWords = $("<td>").text(words);
-    var rowEreaser = $("<td>");
-    var link = $("<a>").attr("href","#").addClass("rowRemover");
-    var icon = $("<i>").addClass("small").addClass("material-icons").text("delete");
+function boardInsert(){    
+    var scoringBoard = $(".scoreBoard").find("tbody");
+    var playerName = "Anna";
+    var numOfWords = $("#wordAmount").text();
+    var rowEreaser = "<a><i class='small material-icons'>delete</i></a>";
 
-    link.append(icon);
-    rowEreaser.append(link);
+    var boardRow = "<tr>"+
+                      "<td>"+ playerName + "</td>"+
+                      "<td>"+ numOfWords + " words" + "</td>"+
+                      "<td>"+ rowEreaser + "</td>"+
+                  "</tr>";
 
-    scoringBoard.append(playerName);
-    scoringBoard.append(numOfWords);
-    scoringBoard.append(rowEreaser);
-
-    return scoringBoard;
-};
+  scoringBoard.prepend(boardRow); }
 
 
-  //  var boardRow = "<tr>"+
-  //                    "<td>"+ playerName + "</td>"+
-  //                    "<td>"+ numOfWords + " words" + "</td>"+
-  //                    "<td>"+ rowEreaser + "</td>"+
-  //                  "</tr>";
-//
-//    scoringBoard.prepend(boardRow);
-
-
-//$(".row-Remover").click(function(event) {
-//    event.preventDefault();
-//    $(this).parent().parent().remove();
-//    console.log("o que ta acontecendo porra");
-//});
+$(".rowEreaser").click(function(event) {
+    event.preventDefault(); 
+    $(this).parent().parent().remove();});
 
 
 
 function restartGame() {
-  $("#refreshButton").click(function () {
+    $("#refreshButton").click(function() {
     area.attr("disabled", false);
     area.val("");
     $("#wordAmount").text("0");
