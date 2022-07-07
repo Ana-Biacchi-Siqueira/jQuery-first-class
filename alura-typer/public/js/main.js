@@ -3,10 +3,11 @@ var area = $(".typingArea");
 
 $(function () {
   refreshPhrase();
-  startsAmountCount();
+  startsAmountCount()
   startsTimer();
   correctionSync();
-  $("#refreshButton").click(restartGame);
+  $("#refreshButton").click(restartGame);  
+   
 });
 
 function refreshPhrase() {
@@ -66,22 +67,29 @@ function correctionSync(){
 
 }
 
-function boardInsert(){
+function boardInsert(){    
     var scoringBoard = $(".scoreBoard").find("tbody");
     var playerName = "Anna";
     var numOfWords = $("#wordAmount").text();
+    var rowEreaser = "<a><i class='small material-icons'>delete</i></a>";
+
     var boardRow = "<tr>"+
                       "<td>"+ playerName + "</td>"+
                       "<td>"+ numOfWords + " words" + "</td>"+
-                    "</tr>"
-    scoringBoard.prepend(boardRow);
+                      "<td>"+ rowEreaser + "</td>"+
+                  "</tr>";
 
-}
+  scoringBoard.prepend(boardRow); }
+
+
+$(".rowEreaser").click(function(event) {
+    event.preventDefault(); 
+    $(this).parent().parent().remove();});
 
 
 
 function restartGame() {
-  $("#refreshButton").click(function () {
+    $("#refreshButton").click(function() {
     area.attr("disabled", false);
     area.val("");
     $("#wordAmount").text("0");
