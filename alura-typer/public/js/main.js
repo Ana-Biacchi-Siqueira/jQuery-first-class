@@ -67,16 +67,38 @@ function correctionSync(){
 }
 
 function boardInsert(){
-    var scoringBoard = $(".scoreBoard").find("tbody");
-    var playerName = "Anna";
-    var numOfWords = $("#wordAmount").text();
-    var boardRow = "<tr>"+
-                      "<td>"+ playerName + "</td>"+
-                      "<td>"+ numOfWords + " words" + "</td>"+
-                    "</tr>"
-    scoringBoard.prepend(boardRow);
+    var scoringBoard = $("<tr>");
+    var playerName = $("<td>").text(Anna);
+    var numOfWords = $("<td>").text(words);
+    var rowEreaser = $("<td>");
+    var link = $("<a>").attr("href","#").addClass("rowRemover");
+    var icon = $("<i>").addClass("small").addClass("material-icons").text("delete");
 
-}
+    link.append(icon);
+    rowEreaser.append(link);
+
+    scoringBoard.append(playerName);
+    scoringBoard.append(numOfWords);
+    scoringBoard.append(rowEreaser);
+
+    return scoringBoard;
+};
+
+
+  //  var boardRow = "<tr>"+
+  //                    "<td>"+ playerName + "</td>"+
+  //                    "<td>"+ numOfWords + " words" + "</td>"+
+  //                    "<td>"+ rowEreaser + "</td>"+
+  //                  "</tr>";
+//
+//    scoringBoard.prepend(boardRow);
+
+
+//$(".row-Remover").click(function(event) {
+//    event.preventDefault();
+//    $(this).parent().parent().remove();
+//    console.log("o que ta acontecendo porra");
+//});
 
 
 
