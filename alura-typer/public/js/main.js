@@ -71,20 +71,44 @@ function boardInsert(){
     var scoringBoard = $(".scoreBoard").find("tbody");
     var playerName = "Anna";
     var numOfWords = $("#wordAmount").text();
-    var rowEreaser = "<a><i class='small material-icons'>delete</i></a>";
 
-    var boardRow = "<tr>"+
-                      "<td>"+ playerName + "</td>"+
-                      "<td>"+ numOfWords + " words" + "</td>"+
-                      "<td>"+ rowEreaser + "</td>"+
-                  "</tr>";
+    var boardRow = newRow(playerName, numOfWords);
+    boardRow.find(".rowEreaser").click(eraseRow);
+    
+    //"<tr>"+
+    //                  "<td>"+ playerName + "</td>"+
+    //                  "<td>"+ numOfWords + " words" + "</td>"+
+    //                  "<td>"+ rowEreaser + "</td>"+
+    //              "</tr>";
 
   scoringBoard.prepend(boardRow); }
 
 
-$(".rowEreaser").click(function(event) {
+function newRow(player, words){
+  var lineRow = $("<tr>");
+  var playerRow = $("<td>").text(player);
+  var wordsRow = $("<td>").text(words);
+  var rowDeleter = $("<td>");
+
+  var  buttonLink = $("<a>").addClass("rowEreaser").attr("href","#");
+  var buttonIcon = $("<i>").addClass("small").addClass("material-icons").text("delete");
+
+  buttonLink.prepend(buttonIcon);
+  rowDeleter.append(buttonLink);
+
+  lineRow.append(playerRow);
+  lineRow.append(wordsRow);
+  lineRow.append(rowDeleter);
+
+  return lineRow;
+
+  console.log(buttonLink);
+
+}
+
+function eraseRow() {
     event.preventDefault(); 
-    $(this).parent().parent().remove();});
+    $(this).parent().parent().remove();}
 
 
 
